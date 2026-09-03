@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ma page</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    
+    .texte {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+
+        /* =========================
+           PREMIÈRE IMAGE
+        ========================= */
+
+        .photo-haut {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        /* =========================
+           SECTION AVEC IMAGE DE FOND
+        ========================= */
+
+        .section-fond {
+            position: relative;
+
+            min-height: 100vh;
+
+            background-image: url("photo2.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            padding: clamp(30px, 5vw, 70px) 20px;
+        }
+
+
+        /* =========================
+           VOILE SUR L'IMAGE
+        ========================= */
+
+        .section-fond::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.0);
+        }
+
+        /* =========================
+           CONTENU
+        ========================= */
+
+        .texte {
+            position: relative;
+            z-index: 1;
+
+            width: min(92%, 1100px);
+
+            margin: 0 auto;
+
+            color:  #744699;
+            
+            /* Tout en majuscules */
+   			text-transform: uppercase;
+        }
+
+
+        /* =========================
+           TITRES
+        ========================= */
+
+        .texte h1 {
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .texte h2 {
+            font-size: clamp(28px, 4vw, 50px);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .texte h3 {
+            font-size: clamp(20px, 2.5vw, 32px);
+            line-height: 1.2;
+        }
+
+        .texte h4 {
+            font-size: clamp(20px, 2.5vw, 30px);
+            text-transform: uppercase;
+        }
+
+        .texte p {
+            font-size: clamp(16px, 1.7vw, 22px);
+            line-height: 1.4;
+        }
+
+        .texte a {
+            color: inherit;
+            overflow-wrap: anywhere;
+        }
+
+
+        /* ==================================================
+           TITRE PRINCIPAL
+        ================================================== */
+
+        .entete {
+            text-align: center;
+            margin-bottom: clamp(35px, 5vw, 70px);
+        }
+
+        .entete h2 {
+            margin-bottom: 25px;
+        }
+
+
+        /* ==================================================
+           PROGRAMME
+        ================================================== */
+
+        .programme {
+            display: grid;
+
+            grid-template-columns:
+                minmax(100px, 0.7fr)
+                minmax(140px, 1fr)
+                minmax(220px, 1.5fr);
+
+            column-gap: clamp(15px, 3vw, 45px);
+            row-gap: 10px;
+
+            align-items: start;
+
+            margin-bottom: clamp(40px, 6vw, 80px);
+        }
+
+
+        /* =========================
+           JEUDI
+        ========================= */
+
+        .jeudi {
+            grid-column: 1;
+            grid-row: 1 / 4;
+        }
+
+        .horaires-jeudi {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .activite-jeudi-1 {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .horaires-jeudi-2 {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .activite-jeudi-2 {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .lieu-jeudi {
+            grid-column: 2 / 4;
+            grid-row: 3;
+
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           SAMEDI
+        ========================= */
+
+        .samedi {
+            grid-column: 1;
+            grid-row: 4;
+            margin-top: 25px;
+        }
+
+        .horaires-samedi {
+            grid-column: 2;
+            grid-row: 4;
+            margin-top: 25px;
+        }
+
+        .activite-samedi {
+            grid-column: 3;
+            grid-row: 4;
+            margin-top: 25px;
+        }
+
+        .lieu-samedi {
+            grid-column: 2 / 4;
+            grid-row: 5;
+        }
+
+
+        /* ==================================================
+           BAS : TARIFS + CONTACT
+        ================================================== */
+
+        .bas {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: clamp(40px, 10vw, 140px);
+
+            align-items: start;
+        }
+
+
+        /* =========================
+           TARIFS
+        ========================= */
+
+        .tarifs h2,
+        .contact h2 {
+            margin-bottom: 25px;
+        }
+
+        .tarif-ligne {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: baseline;
+
+            gap: 20px;
+
+            max-width: 450px;
+
+            margin-bottom: 12px;
+        }
+
+        .tarif-ligne span {
+            text-align: left;
+        }
+
+        .tarif-ligne strong {
+            white-space: nowrap;
+        }
+
+        .tarifs h3 {
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+.tarif-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tarif-description small {
+    font-size: clamp(11px, 1.2vw, 15px);
+    margin-top: 4px;
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact p {
+            margin-bottom: 8px;
+        }
+
+		.telephone,
+		.contact a {
+   			 text-transform: none;
+		}
+
+        /* ==================================================
+           TABLETTE
+        ================================================== */
+
+        @media (max-width: 800px) {
+
+            .section-fond {
+                padding: 40px 15px;
+            }
+
+            .texte {
+                width: 95%;
+            }
+
+            .programme {
+                grid-template-columns:
+                    100px
+                    1fr
+                    1.2fr;
+
+                column-gap: 15px;
+            }
+
+            .bas {
+                gap: 40px;
+            }
+        }
+
+
+        /* ==================================================
+           TELEPHONE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            .section-fond {
+                min-height: auto;
+
+                padding: 40px 15px 50px;
+            }
+
+            .texte {
+                width: 100%;
+            }
+
+
+            /* -------------------------
+               ENTETE
+            ------------------------- */
+
+            .entete {
+                margin-bottom: 40px;
+            }
+
+
+            /* -------------------------
+               PROGRAMME
+            ------------------------- */
+
+            .programme {
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 8px;
+
+                margin-bottom: 50px;
+            }
+
+
+            /* Chaque journée devient un petit bloc */
+
+            .jeudi,
+            .samedi {
+                margin-top: 20px;
+                margin-bottom: 5px;
+            }
+
+            .horaires-jeudi,
+            .horaires-jeudi-2,
+            .horaires-samedi {
+                margin: 0;
+            }
+
+            .activite-jeudi-1,
+            .activite-jeudi-2,
+            .activite-samedi {
+                margin: 0 0 10px 20px;
+            }
+
+            .lieu-jeudi,
+            .lieu-samedi {
+                margin: 0 0 15px 20px;
+            }
+
+
+            /* -------------------------
+               TARIFS + CONTACT
+            ------------------------- */
+
+            .bas {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+
+            /* -------------------------
+               TARIFS
+            ------------------------- */
+
+            .tarif-ligne {
+                width: 100%;
+                max-width: none;
+
+                gap: 15px;
+            }
+
+        }
+
+
+        /* ==================================================
+           TRÈS PETITS TÉLÉPHONES
+        ================================================== */
+
+        @media (max-width: 380px) {
+
+            .section-fond {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .tarif-ligne {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .tarif-ligne strong {
+                align-self: flex-start;
+            }
+
+        }
+        
+.texte,
+.texte h1,
+.texte h2,
+.texte h3,
+.texte h4,
+.texte h5,
+.texte p,
+.texte span,
+.texte strong {
+
+    font-family: "Courier New", monospace !important;
+ 
+  
+    font-weight: 700;
+}
+    </style>
+</head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<body>
+
+
+    <!-- =========================
+         PREMIÈRE PHOTO
+    ========================= -->
+
+    <img
+        src="photo1.png"
+        alt="Première photo"
+        class="photo-haut"
+    >
+
+
+    <!-- =========================
+         DEUXIÈME PHOTO + TEXTE
+    ========================= -->
+
+    <section class="section-fond">
+
+        <div class="texte">
+
+
+            <!-- =========================
+                 TITRE
+            ========================= -->
+
+            <header class="entete">
+            
+                <h2> 
+                    Saison de septembre à juillet
+                </h2>
+   
+
+                <h3>
+                    Séances collectives les semaines impaires
+                </h3>
+
+            </header>
+
+
+            <!-- =========================
+                 PROGRAMME
+            ========================= -->
+
+            <div class="programme">
+
+
+                <!-- JEUDI -->
+
+                <div class="jeudi">
+                    <h4>Jeudi :</h4>
+                </div>
+
+
+                <div class="horaires-jeudi">
+                    <p>17h15 – 18h45</p>
+                </div>
+
+                <div class="activite-jeudi-1">
+                    <p>
+                       <h4>  <strong>Voyage méditatif sonore</strong> </h4>
+                    </p>
+                </div>
+
+
+                <div class="horaires-jeudi-2">
+                    <p>19h00 – 20h30</p>
+                </div>
+
+                <div class="activite-jeudi-2">
+                    <p>
+                       <h4>  <strong>Dao Yin</strong> </h4>
+                    </p>
+                </div>
+
+
+                <div class="lieu-jeudi">
+                    <p>
+                        Maison de quartier du Jardin des Plantes<br>
+                        114 bis avenue des Martyrs de la Résistance<br>
+                        76100 Rouen
+                    </p>
+                </div>
+
+
+                <!-- SAMEDI -->
+
+                <div class="samedi">
+                    <h4>Samedi :</h4>
+                </div>
+
+                <div class="horaires-samedi">
+                    <p>10h30 – 12h00</p>
+                </div>
+
+                <div class="activite-samedi">
+                    <p>
+                      <h4>  <strong>Dao Yin</strong> </h4>
+                    </p>
+                </div>
+
+                <div class="lieu-samedi">
+                    <p>
+                        Jardin des Plantes<br>
+                        76100 Rouen
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TARIFS + CONTACT
+            ========================= -->
+
+            <div class="bas">
+
+
+                <!-- TARIFS -->
+
+                <div class="tarifs">
+
+                    <h4>Tarifs</h4>
+
+					<br>
+
+                    <div class="tarif-ligne">
+                        <span>Adhésion :</span>
+                        <strong>15,00 €</strong>
+                    </div>
+
+                    <h4>Carte 10 séances :</h4>
+                    
+					<br>
+					
+                    <div class="tarif-ligne">
+                        <span>Dao Yin 1h30</span>
+                        <strong>105,00 €</strong>
+                    </div>
+
+					<div class="tarif-ligne">
+
+						<div class="tarif-description">			
+        					<span>Voyage méditatif sonore 1h</span>
+       						<small>Tambour et Drum Pan </small>
+   						</div>
+
+    					<strong>95,00 €</strong>
+
+					</div>
+
+                
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="contact">
+
+                    <h4>Contact</h4>
+                    
+					<br>
+					
+                    <p>
+                        <strong>Isabelle Louesdon</strong>
+                    </p>
+
+                    <p class="telephone">
+                        Tél. : 06 61 90 64 56
+                    </p>
+
+                    <p>
+                        <a href="mailto:phenixdor.daoyin@gmail.com">
+                            phenixdor.daoyin@gmail.com
+                        </a>
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
+
